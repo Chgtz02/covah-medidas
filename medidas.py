@@ -29,26 +29,23 @@ def calcular_gabinetes_superiores(ancho, alto, tiene_objeto_arriba, tiene_objeto
     return ancho_puerta, alto
 
 
-def calcular_esquinero_superior(ancho, alto, tiene_objeto_arriba, tiene_objeto_abajo):
+def calcular_esquinero_superior(lado1, lado2, alto, tiene_objeto_arriba, tiene_objeto_abajo):
     if tiene_objeto_arriba and tiene_objeto_abajo:
-        alto -= .6  # Restar 6 mm si hay objetos arriba y abajo
+        alto -= 0.6  # Restar 6 mm si hay objetos arriba y abajo
     elif tiene_objeto_arriba or tiene_objeto_abajo:
-        alto -= .3  # Restar 3 mm si hay objeto arriba o abajo
+        alto -= 0.3  # Restar 3 mm si hay objeto arriba o abajo
 
-    puerta1 = ancho - 28.5 - 1.5 - 0.3
-    puerta2 = ancho - 28.5 - 0.3
+    puerta1 = lado1 - 28.5 - 1.5 - 0.3
+    puerta2 = lado2 - 28.5 - 0.3
 
     return puerta1, puerta2, alto
 
 
-def calcular_esquinero_inferior(ancho, alto, tiene_objeto_arriba, tiene_objeto_abajo):
-    if tiene_objeto_arriba and tiene_objeto_abajo:
-        alto -= .6  # Restar 6 mm si hay objetos arriba y abajo
-    elif tiene_objeto_arriba or tiene_objeto_abajo:
-        alto -= .3  # Restar 3 mm si hay objeto arriba o abajo
-
-    puerta1 = ancho - 58.5 - 1.5 - 0.3
-    puerta2 = ancho - 58.5 - 0.3
+def calcular_esquinero_inferior(lado1, lado2):
+    alto = 67  # La altura del esquinero inferior siempre será 67
+    
+    puerta1 = lado1 - 58.5 - 1.5 - 0.3
+    puerta2 = lado2 - 58.5 - 0.3
 
     return puerta1, puerta2, alto
 
@@ -57,7 +54,7 @@ def calcular_muebles_inferiores(ancho, num_puertas):
     alto_puerta = 67  # El alto de las puertas siempre es 67 cm
 
     if num_puertas == 1:
-        ancho_puerta = ancho - .3  # Restar 3 mm si es 1 puerta
+        ancho_puerta = ancho - .4  # Restar 3 mm si es 1 puerta
     elif num_puertas == 2:
         ancho_puerta = (ancho / 2) - 0.3  # Dividir y restar 0.3 mm si son 2 puertas
     else:
